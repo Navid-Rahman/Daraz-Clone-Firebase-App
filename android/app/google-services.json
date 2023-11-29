@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "729202262456",
+    "project_id": "e-commerce-fdb3c",
+    "storage_bucket": "e-commerce-fdb3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729202262456:android:52788f70ea7852729d0f4d",
+        "android_client_info": {
+          "package_name": "com.example.daraz_idea_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCob7Qw4keHjta4FQhQ925CGr_UctMqqaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
