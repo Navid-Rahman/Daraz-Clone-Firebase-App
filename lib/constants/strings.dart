@@ -22,6 +22,19 @@ const createNewAccount = "Or, Create a New Account";
 const privacyPolicy = "Privacy Policy";
 const termsAndCondition = "Terms & Conditions";
 const alreadyHaveAnAccount = "Already have an account? ";
+const loggedInSuccessfully = "Logged In Successfully";
+const loggedInFailed = "Logged In Failed";
+const registeredSuccessfully = "Registered Successfully";
+const registeredFailed = "Registered Failed";
+const loggedOutSuccessfully = "Logged Out Successfully";
+const loggedOutFailed = "Logged Out Failed";
+const passwordNotMatched = "Password not matched";
+const passwordMustBeAtLeast6Characters =
+    "Password must be at least 6 characters";
+const emailIsNotValid = "Email is not valid";
+const emailAlreadyInUse = "Email already in use";
+const somethingWentWrong = "Something went wrong";
+const pleaseWait = "Please wait...";
 
 /// Home Strings
 const home = "Home";

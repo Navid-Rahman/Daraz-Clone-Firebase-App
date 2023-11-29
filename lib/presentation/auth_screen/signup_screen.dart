@@ -1,3 +1,4 @@
+import 'package:daraz_idea_firebase/controllers/auth_controllers.dart';
 import 'package:get/get.dart';
 
 import '../../constants/consts.dart';
@@ -5,6 +6,7 @@ import '../../utils/widgets/app_logo_widget.dart';
 import '../../utils/widgets/bg_widget.dart';
 import '../../utils/widgets/custom_button.dart';
 import '../../utils/widgets/custom_textfields.dart';
+import '../home_screen/home.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -15,6 +17,13 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool isCheck = false;
+  var controller = Get.put(AuthController());
+
+  // Text Controllers
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +46,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
               20.heightBox,
               Column(
                 children: [
-                  customTextField(title: name, hint: nameHint),
-                  customTextField(title: email, hint: emailHint),
-                  customTextField(title: password, hint: passwordHint),
                   customTextField(
-                      title: confirmPassword, hint: confirmPasswordHint),
+                    title: name,
+                    hint: nameHint,
+                    controller: nameController,
+                    isPassword: false,
+                  ),
+                  customTextField(
+                    title: email,
+                    hint: emailHint,
+                    controller: emailController,
+                    isPassword: false,
+                  ),
+                  customTextField(
+                    title: password,
+                    hint: passwordHint,
+                    controller: passwordController,
+                    isPassword: true,
+                  ),
+                  customTextField(
+                    title: confirmPassword,
+                    hint: confirmPasswordHint,
+                    controller: confirmPasswordController,
+                    isPassword: true,
+                  ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -91,7 +119,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   10.heightBox,
                   customButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (isCheck != false) {
+                        try {
+                          await controller
+                              .registerMethod(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            context: context,
+                          )
+                              .then((value) {
+                            return controller.storeUserData(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }).then((value) {
+                            VxToast.show(context, msg: loggedInSuccessfully);
+                            Get.offAll(const Home());
+                          });
+                        } catch (e) {
+                          auth.signOut();
+                          VxToast.show(context, msg: e.toString());
+                        }
+                      }
+                    },
                     title: signUp,
                     color: isCheck == true ? redColor : lightGrey,
                     textColor: whiteColor,

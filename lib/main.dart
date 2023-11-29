@@ -2,7 +2,16 @@ import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/presentation/splash_screen/splash_screen.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(const MyApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
