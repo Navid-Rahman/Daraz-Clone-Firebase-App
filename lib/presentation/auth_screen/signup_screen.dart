@@ -123,7 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (isCheck != false) {
                         try {
                           await controller
-                              .registerMethod(
+                              .signupMethod(
                             email: emailController.text,
                             password: passwordController.text,
                             context: context,

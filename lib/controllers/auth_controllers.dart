@@ -9,24 +9,25 @@ class AuthController extends GetxController {
   var passwordController = TextEditingController();
 
   /// Login Method
-
   Future<UserCredential?> loginMethod({
     context,
   }) async {
     UserCredential? userCredential;
 
     try {
-      await auth.signInWithEmailAndPassword(
+      userCredential = await auth.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
+    } catch (e) {
+      print(e);
     }
 
     return userCredential;
   }
 
   /// Register Method
-  Future<UserCredential?> registerMethod({
+  Future<UserCredential?> signupMethod({
     email,
     password,
     context,
@@ -38,6 +39,8 @@ class AuthController extends GetxController {
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
+    } catch (e) {
+      print(e);
     }
 
     return userCredential;
@@ -50,7 +53,7 @@ class AuthController extends GetxController {
     password,
   }) async {
     DocumentReference store =
-        await firestore.collection(userCollection).doc(currentUser!.uid);
+        await firestore.collection(usersCollection).doc(currentUser!.uid);
 
     store.set({
       'name': name,
@@ -61,7 +64,7 @@ class AuthController extends GetxController {
   }
 
   /// Logout Method
-  logoutMethod(
+  signoutMethod(
     context,
   ) async {
     try {

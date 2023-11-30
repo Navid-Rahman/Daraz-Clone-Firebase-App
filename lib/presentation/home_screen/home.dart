@@ -1,5 +1,5 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
-import 'package:daraz_idea_firebase/controllers/home-controller.dart';
+import 'package:daraz_idea_firebase/controllers/home_controller.dart';
 import 'package:daraz_idea_firebase/presentation/account/account_screen.dart';
 import 'package:daraz_idea_firebase/presentation/cart/cart_screen.dart';
 import 'package:daraz_idea_firebase/presentation/categories/categories_screen.dart';

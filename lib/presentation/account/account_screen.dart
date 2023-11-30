@@ -69,7 +69,7 @@ class AccountScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () async {
-                        await Get.put(AuthController()).logoutMethod(context);
+                        await Get.put(AuthController()).signoutMethod(context);
                         Get.offAll(() => const LoginScreen());
                       },
                       child: "Logout".text.white.fontFamily(semibold).make(),
