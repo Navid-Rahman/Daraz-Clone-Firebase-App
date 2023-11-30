@@ -1,5 +1,7 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
+import 'package:daraz_idea_firebase/controllers/profile_controller.dart';
+import 'package:daraz_idea_firebase/presentation/account/edit_profile_screen.dart';
 import 'package:daraz_idea_firebase/presentation/account/widgets/details_card.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
@@ -12,21 +14,25 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProfileController());
+
     return bgWidget(
       child: Scaffold(
         body: SafeArea(
           child: Column(
             children: [
               /// Edit Icon
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Align(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: const Align(
                   alignment: Alignment.topRight,
                   child: Icon(
                     Icons.edit,
                     color: Colors.white,
                   ),
-                ),
+                ).onTap(() {
+                  Get.to(() => const EditProfileScreen());
+                }),
               ),
 
               /// User Profile

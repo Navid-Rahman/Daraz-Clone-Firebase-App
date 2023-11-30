@@ -1,6 +1,8 @@
 import 'package:daraz_idea_firebase/constants/colors.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
+import 'package:daraz_idea_firebase/presentation/home_screen/home.dart';
 import 'package:daraz_idea_firebase/utils/widgets/app_logo_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +19,15 @@ class _SplashScreenState extends State<SplashScreen> {
   // creating a method to navigate to login screen
   changeScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const LoginScreen());
+      // Get.to(() => const LoginScreen());
+
+      auth.authStateChanges().listen((User? user) {
+        if (user == null && mounted) {
+          Get.to(() => const LoginScreen());
+        } else {
+          Get.to(() => const Home());
+        }
+      });
     });
   }
 

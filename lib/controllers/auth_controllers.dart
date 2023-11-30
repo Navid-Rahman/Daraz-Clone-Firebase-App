@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  var isLoading = false.obs;
+
   // Text Controllers
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -60,6 +62,7 @@ class AuthController extends GetxController {
       'email': email,
       'password': password,
       'photoUrl': '',
+      'id': currentUser!.uid,
     });
   }
 
