@@ -5,6 +5,7 @@ import 'package:daraz_idea_firebase/presentation/categories/categories_screen.da
 import 'package:daraz_idea_firebase/presentation/home_screen/home_screen.dart';
 import 'package:get/get.dart';
 
+import '../../utils/widgets/exit_dialog.dart';
 import '../profile/profile_screen.dart';
 
 class Home extends StatelessWidget {
@@ -51,28 +52,37 @@ class Home extends StatelessWidget {
       AccountScreen(),
     ];
 
-    return Scaffold(
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          currentIndex: controller.currentNavIndex.value,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: whiteColor,
-          items: navbarItem,
-          selectedItemColor: redColor,
-          selectedLabelStyle: const TextStyle(fontFamily: semibold),
-          onTap: (value) {
-            controller.currentNavIndex.value = value;
-          },
-        ),
-      ),
-      body: Column(
-        children: [
-          Obx(
-            () => Expanded(
-              child: navBody.elementAt(controller.currentNavIndex.value),
-            ),
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => exitDialog(context));
+        return false;
+      },
+      child: Scaffold(
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+            currentIndex: controller.currentNavIndex.value,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: whiteColor,
+            items: navbarItem,
+            selectedItemColor: redColor,
+            selectedLabelStyle: const TextStyle(fontFamily: semibold),
+            onTap: (value) {
+              controller.currentNavIndex.value = value;
+            },
           ),
-        ],
+        ),
+        body: Column(
+          children: [
+            Obx(
+              () => Expanded(
+                child: navBody.elementAt(controller.currentNavIndex.value),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
