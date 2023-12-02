@@ -22,14 +22,11 @@ class ChatScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Container(
-                color: Colors.teal,
-                child: ListView(
-                  children: [
-                    senderBubble(),
-                    senderBubble(),
-                  ],
-                ),
+              child: ListView(
+                children: [
+                  senderBubble(),
+                  senderBubble(),
+                ],
               ),
             ),
             10.heightBox,
@@ -37,6 +34,7 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
+                    controller: controller.messageController,
                     decoration: const InputDecoration(
                       hintText: "Type a message...",
                       border: OutlineInputBorder(
@@ -52,11 +50,16 @@ class ChatScreen extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
                   icon: const Icon(
                     Icons.send,
                     color: redColor,
                   ),
+                  onPressed: () {
+                    controller.sendMessage(
+                      controller.messageController.text,
+                    );
+                    controller.messageController.clear();
+                  },
                 ),
               ],
             )
