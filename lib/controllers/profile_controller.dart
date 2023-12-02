@@ -39,7 +39,7 @@ class ProfileController extends GetxController {
   // Upload Profile Image
   uploadProfileImage() async {
     var fileName = basename(profileImagePath.value);
-    var destination = 'profile/images/${currentUser!.uid}/$fileName';
+    var destination = 'images/profile/${currentUser!.uid}/$fileName';
 
     Reference ref = FirebaseStorage.instance.ref().child(destination);
     await ref.putFile(File(profileImagePath.value));
@@ -66,12 +66,12 @@ class ProfileController extends GetxController {
   // Change Auth Password
   changeAuthPassword({
     email,
-    oldPassword,
+    password,
     newPassword,
   }) async {
-    var credentials = EmailAuthProvider.credential(
+    final credentials = EmailAuthProvider.credential(
       email: email,
-      password: oldPassword,
+      password: password,
     );
 
     await currentUser!.reauthenticateWithCredential(credentials).then((value) {

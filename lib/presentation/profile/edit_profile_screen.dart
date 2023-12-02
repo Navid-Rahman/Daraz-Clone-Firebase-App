@@ -91,40 +91,33 @@ class EditProfileScreen extends StatelessWidget {
                         textColor: whiteColor,
                         title: "Save",
                         onPressed: () async {
-                          controller.isLoading.value = true;
+                          controller.isLoading(true);
 
                           // If profile image path is not empty then upload image
-                          if (controller.profileImagePath.isNotEmpty) {
+                          if (controller.profileImagePath.value.isNotEmpty) {
                             await controller.uploadProfileImage();
                           } else {
                             controller.profileImageURL = data['profileImage'];
                           }
 
-                          // If old password is not empty and matches with the old password then update profile
-                          if (controller
-                                  .oldPasswordController.text.isNotEmpty &&
-                              controller.oldPasswordController.text ==
-                                  data['password']) {
+                          // If old password is correct then update profile
+                          if (data['password'] ==
+                              controller.oldPasswordController.text) {
                             await controller.changeAuthPassword(
                               email: data['email'],
-                              oldPassword:
-                                  controller.oldPasswordController.text,
+                              password: controller.oldPasswordController.text,
                               newPassword:
                                   controller.newPasswordController.text,
                             );
 
                             await controller.updateProfile(
                               name: controller.nameController.text,
-                              password:
-                                  controller.newPasswordController.text.isEmpty
-                                      ? data['password']
-                                      : controller.newPasswordController.text,
+                              password: controller.newPasswordController.text,
                               profileImageURL: controller.profileImageURL,
                             );
 
                             VxToast.show(context,
                                 msg: "Profile Updated Successfully");
-                            return;
                           } else {
                             VxToast.show(context,
                                 msg: "Old Password is Incorrect");

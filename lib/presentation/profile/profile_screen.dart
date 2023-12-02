@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
 import 'package:daraz_idea_firebase/controllers/profile_controller.dart';
-import 'package:daraz_idea_firebase/presentation/account/edit_profile_screen.dart';
-import 'package:daraz_idea_firebase/presentation/account/widgets/details_card.dart';
+import 'package:daraz_idea_firebase/presentation/profile/widgets/details_card.dart';
 import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/auth_controllers.dart';
 import '../auth_screen/login_screen.dart';
+import 'edit_profile_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -101,7 +101,7 @@ class AccountScreen extends StatelessWidget {
                             onPressed: () async {
                               await Get.put(AuthController())
                                   .signoutMethod(context);
-                              Get.offAll(() => const LoginScreen());
+                              Get.offAll(() => LoginScreen());
                             },
                             child:
                                 "Logout".text.white.fontFamily(semibold).make(),

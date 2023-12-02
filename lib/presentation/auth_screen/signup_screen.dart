@@ -124,9 +124,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             valueColor: AlwaysStoppedAnimation(redColor),
                           )
                         : customButton(
+                            title: signUp,
+                            color: isCheck == true ? redColor : lightGrey,
+                            textColor: whiteColor,
                             onPressed: () async {
                               if (isCheck != false) {
-                                controller.isLoading.value = true;
+                                controller.isLoading(true);
                                 try {
                                   await controller
                                       .signupMethod(
@@ -148,13 +151,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 } catch (e) {
                                   auth.signOut();
                                   VxToast.show(context, msg: e.toString());
-                                  controller.isLoading.value = false;
+                                  controller.isLoading(false);
                                 }
                               }
                             },
-                            title: signUp,
-                            color: isCheck == true ? redColor : lightGrey,
-                            textColor: whiteColor,
                           ).box.width(context.screenWidth - 50).make(),
                     10.heightBox,
                     Row(

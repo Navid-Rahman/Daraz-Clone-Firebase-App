@@ -1,5 +1,6 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
+import 'package:daraz_idea_firebase/controllers/product_controller.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProductController());
+
     return bgWidget(
       child: Scaffold(
         appBar: AppBar(
@@ -58,6 +61,7 @@ class CategoriesScreen extends StatelessWidget {
                     .outerShadowSm
                     .make()
                     .onTap(() {
+                  controller.getSubCategories(categoriesLists[index]);
                   Get.to(
                     () => CategoryDetails(
                       title: categoriesLists[index],

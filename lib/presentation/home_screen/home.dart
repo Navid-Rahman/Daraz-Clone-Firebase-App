@@ -1,10 +1,11 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/controllers/home_controller.dart';
-import 'package:daraz_idea_firebase/presentation/account/profile_screen.dart';
 import 'package:daraz_idea_firebase/presentation/cart/cart_screen.dart';
 import 'package:daraz_idea_firebase/presentation/categories/categories_screen.dart';
 import 'package:daraz_idea_firebase/presentation/home_screen/home_screen.dart';
 import 'package:get/get.dart';
+
+import '../profile/profile_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

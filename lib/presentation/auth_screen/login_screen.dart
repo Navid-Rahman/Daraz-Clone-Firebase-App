@@ -62,8 +62,11 @@ class LoginScreen extends StatelessWidget {
                             valueColor: AlwaysStoppedAnimation(redColor),
                           )
                         : customButton(
+                            title: logIn,
+                            color: redColor,
+                            textColor: whiteColor,
                             onPressed: () async {
-                              controller.isLoading.value = true;
+                              controller.isLoading(true);
 
                               await controller
                                   .loginMethod(context: context)
@@ -73,13 +76,10 @@ class LoginScreen extends StatelessWidget {
                                       msg: loggedInSuccessfully);
                                   Get.offAll(() => const Home());
                                 } else {
-                                  controller.isLoading.value = false;
+                                  controller.isLoading(false);
                                 }
                               });
                             },
-                            title: logIn,
-                            color: redColor,
-                            textColor: whiteColor,
                           ).box.width(context.screenWidth - 50).make(),
                     5.heightBox,
                     createNewAccount.text.color(fontGrey).make(),

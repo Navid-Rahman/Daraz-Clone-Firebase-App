@@ -2,6 +2,7 @@ import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/product_controller.dart';
 import 'items_details.dart';
 
 class CategoryDetails extends StatelessWidget {
@@ -10,6 +11,8 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<ProductController>();
+
     return bgWidget(
       child: Scaffold(
         appBar: AppBar(
@@ -18,14 +21,15 @@ class CategoryDetails extends StatelessWidget {
         body: Container(
           padding: const EdgeInsets.all(12),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                    6,
-                    (index) => "Baby Clothing"
+                    controller.subcat.length,
+                    (index) => "${controller.subcat[index]}"
                         .text
                         .size(12)
                         .fontFamily(semibold)

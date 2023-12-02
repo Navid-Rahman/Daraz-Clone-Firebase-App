@@ -1,0 +1,84 @@
+{
+  "Categories": [
+    {
+      "name": "Women's Clothing",
+      "subCategories": [
+        "Wedding & Event",
+        "Tops & Sets",
+        "Bottoms",
+        "Outerwear & Sweaters",
+        "Jumpsuits & Rompers",
+        "Accessories"
+      ]
+    },
+    {
+      "name": "Men's Clothing & Fashion",
+      "subCategories": [
+        "Formal Wear",
+        "Outwear & Sweaters",
+        "Accessories",
+        "Shoes"
+      ]
+    },
+    {
+      "name": "Computers & Accessories",
+      "subCategories": [
+        "Laptops",
+        "Desktops",
+        "Monitors",
+        "Gaming Accessories"
+      ]
+    },
+    {
+      "name": "Automobiles",
+      "subCategories": [
+        "Car Electronics",
+        "Car Lights",
+        "Car Repair Tools",
+        "Motorcycle Accessories"
+
+      ]
+    },
+    {
+      "name": "Kid's Toys",
+      "subCategories": [
+        "Shoes & Clothing",
+        "Toys & Hobbies",
+        "Baby Care"
+      ]
+    },
+    {
+      "name": "Sports",
+      "subCategories": [
+        "Home Decor",
+        "Kitchen & Dining",
+        "Pet Supplies",
+        "Home Improvement"
+      ]
+    },
+    {
+      "name": "Jewelry & Watches",
+      "subCategories": [
+        "Fine Jewelry",
+        "Fashion Jewelry",
+        "Watches"
+      ]
+    },
+    {
+      "name": "Cell Phones",
+      "subCategories": [
+        "Mobile Phones",
+        "Mobile Phone Accessories",
+        "Smart Electronics"
+      ]
+    },
+    {
+      "name": "Furniture",
+      "subCategories": [
+        "Home Furniture",
+        "Office Furniture",
+        "Outdoor Furniture"
+      ]
+    }
+  ]
+}

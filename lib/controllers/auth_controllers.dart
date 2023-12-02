@@ -3,6 +3,8 @@ import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+import '../presentation/auth_screen/login_screen.dart';
+
 class AuthController extends GetxController {
   var isLoading = false.obs;
 
@@ -75,6 +77,7 @@ class AuthController extends GetxController {
   ) async {
     try {
       await auth.signOut();
+      Get.offAll(() => LoginScreen());
     } catch (e) {
       VxToast.show(context, msg: e.toString());
     }
