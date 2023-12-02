@@ -4,6 +4,7 @@ import 'package:daraz_idea_firebase/utils/widgets/custom_button.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/product_controller.dart';
+import '../chat_screen/chat_screen.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
@@ -128,7 +129,9 @@ class ItemDetails extends StatelessWidget {
                               Icons.message_outlined,
                               color: darkFontGrey,
                             ),
-                          )
+                          ).onTap(() {
+                            Get.to(() => const ChatScreen());
+                          })
                         ],
                       )
                           .box
