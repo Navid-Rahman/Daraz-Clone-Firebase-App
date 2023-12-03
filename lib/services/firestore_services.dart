@@ -42,4 +42,28 @@ class FirestoreServices {
         .orderBy('created_on', descending: false)
         .snapshots();
   }
+
+  /// Get all my orders
+  static getMyOrders() {
+    return firestore
+        .collection(ordersCollection)
+        .where('order_by', isEqualTo: currentUser!.uid)
+        .snapshots();
+  }
+
+  /// Get all my wishlist
+  static getMyWishlist() {
+    return firestore
+        .collection(productsCollection)
+        .where('p_wishlist', arrayContains: currentUser!.uid)
+        .snapshots();
+  }
+
+  /// Get all my messages
+  static getAllMessages() {
+    return firestore
+        .collection(chatsCollection)
+        .where('fromId', isEqualTo: currentUser!.uid)
+        .snapshots();
+  }
 }

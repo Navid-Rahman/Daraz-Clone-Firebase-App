@@ -2,7 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
 import 'package:daraz_idea_firebase/controllers/profile_controller.dart';
+import 'package:daraz_idea_firebase/presentation/profile/messages/messages_screen.dart';
+import 'package:daraz_idea_firebase/presentation/profile/orders/orders_screen.dart';
 import 'package:daraz_idea_firebase/presentation/profile/widgets/details_card.dart';
+import 'package:daraz_idea_firebase/presentation/profile/wishlist/wishlist_screen.dart';
 import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
@@ -137,6 +140,20 @@ class AccountScreen extends StatelessWidget {
                     ListView.separated(
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
+                          onTap: () {
+                            switch (index) {
+                              case 0:
+                                Get.to(() => const OrdersScreen());
+                                break;
+                              case 1:
+                                Get.to(() => const WishlistScreen());
+                                break;
+
+                              case 2:
+                                Get.to(() => const MessagesScreen());
+                                break;
+                            }
+                          },
                           leading: Image.asset(
                             profileButtonIcons[index],
                             width: 30,
