@@ -41,7 +41,15 @@ class ItemDetails extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (controller.isFavourite.value) {
+                  controller.removeFromWishlist(data.id);
+                  controller.isFavourite.value = false;
+                } else {
+                  controller.addToWishlist(data.id);
+                  controller.isFavourite.value = true;
+                }
+              },
               icon: const Icon(
                 Icons.favorite_outline_rounded,
               ),
