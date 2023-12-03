@@ -127,6 +127,7 @@ class CategoryDetails extends StatelessWidget {
                               )
                               .make()
                               .onTap(() {
+                            controller.checkIfFavourite(data[index]);
                             Get.to(
                               () => ItemDetails(
                                 title: "${data[index]['p_name']}",

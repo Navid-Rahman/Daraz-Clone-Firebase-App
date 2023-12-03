@@ -1,5 +1,6 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/controllers/cart_controller.dart';
+import 'package:daraz_idea_firebase/presentation/cart/shipping_details_screen.dart';
 import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,18 @@ class CartScreen extends StatelessWidget {
             .fontFamily(semibold)
             .make(),
       ),
+      bottomNavigationBar: SizedBox(
+        width: context.screenWidth,
+        height: 60,
+        child: customButton(
+          color: redColor,
+          textColor: whiteColor,
+          title: "Proceed to Checkout",
+          onPressed: () {
+            Get.to(() => const ShippingDetailsScreen());
+          },
+        ),
+      ),
       body: StreamBuilder(
         stream: FirestoreServices.getCart(currentUser!.uid),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -38,6 +51,7 @@ class CartScreen extends StatelessWidget {
           } else {
             var data = snapshot.data!.docs;
             controller.calculateTotalPrice(data);
+            controller.productSnapshot = data;
 
             return Padding(
               padding: const EdgeInsets.all(8),
@@ -100,20 +114,7 @@ class CartScreen extends StatelessWidget {
                       .color(lightGolden)
                       .roundedSM
                       .make(),
-
                   10.heightBox,
-
-                  /// Checkout Button
-                  SizedBox(
-                    width: context.screenWidth,
-                    //height: 50,
-                    child: customButton(
-                      color: redColor,
-                      textColor: whiteColor,
-                      title: "Proceed to Checkout",
-                      onPressed: () {},
-                    ),
-                  ),
                 ],
               ),
             );

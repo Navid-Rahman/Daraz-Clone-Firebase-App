@@ -11,9 +11,6 @@ Widget customButton({
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
       padding: const EdgeInsets.all(12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
     ),
     child: title!.text.color(textColor).fontFamily(bold).make(),
   );

@@ -83,3 +83,8 @@ const productsYouMayAlsoLike = "Products You May Also Like";
 const myWishlist = "My Wishlist";
 const myOrders = "My Orders";
 const messages = "Messages";
+
+/// Payment Method Screen Strings
+const paypal = "Paypal";
+const stripe = "Stripe";
+const cashOnDelivery = "Cash on Delivery";

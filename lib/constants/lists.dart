@@ -76,6 +76,7 @@ const itemDetailsButtonLists = [
   supportPolicy,
 ];
 
+/// Account Screen
 const profileButtonLists = [
   myOrders,
   myWishlist,
@@ -86,4 +87,17 @@ const profileButtonIcons = [
   icOrder,
   icOrders,
   icMessages,
+];
+
+/// Payment Method
+const paymentMethodListImage = [
+  imgPaypal,
+  imgStripe,
+  imgCod,
+];
+
+const paymentMethodTitle = [
+  paypal,
+  stripe,
+  cashOnDelivery,
 ];
