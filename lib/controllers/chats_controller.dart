@@ -22,7 +22,11 @@ class ChatsController extends GetxController {
 
   dynamic chatDocId;
 
+  var isLoading = false.obs;
+
   getChatId() async {
+    isLoading.value = true;
+
     await chats
         .where('users', isEqualTo: {
           friendId: null,
@@ -50,6 +54,8 @@ class ChatsController extends GetxController {
             });
           }
         });
+
+    isLoading.value = false;
   }
 
   sendMessage(String message) async {
