@@ -71,6 +71,7 @@ class ItemDetails extends StatelessWidget {
                 sellerName: data['p_seller'],
                 totalPrice: controller.totalPrice.value,
                 quantity: controller.quantity.value,
+                vendorId: data['vendor_id'],
                 color: data['p_colors'][controller.colorIndex.value],
                 context: context,
               );
