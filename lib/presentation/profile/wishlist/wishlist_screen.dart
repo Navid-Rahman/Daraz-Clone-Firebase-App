@@ -8,6 +8,7 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
         title:
             "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),

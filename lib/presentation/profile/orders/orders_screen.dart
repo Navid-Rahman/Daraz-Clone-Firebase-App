@@ -8,6 +8,7 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
         title: "My Orders".text.color(darkFontGrey).fontFamily(semibold).make(),
       ),
