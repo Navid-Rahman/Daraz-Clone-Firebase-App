@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
 import 'package:daraz_idea_firebase/controllers/profile_controller.dart';
-import 'package:daraz_idea_firebase/presentation/profile/messages/messages_screen.dart';
-import 'package:daraz_idea_firebase/presentation/profile/orders/orders_screen.dart';
 import 'package:daraz_idea_firebase/presentation/profile/widgets/details_card.dart';
-import 'package:daraz_idea_firebase/presentation/profile/wishlist/wishlist_screen.dart';
+import 'package:daraz_idea_firebase/presentation/profile/wishlist_section/wishlist_screen.dart';
 import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
 import 'package:get/get.dart';
@@ -13,6 +11,8 @@ import 'package:get/get.dart';
 import '../../controllers/auth_controllers.dart';
 import '../auth_screen/login_screen.dart';
 import 'edit_profile_screen.dart';
+import 'messages_section/messages_screen.dart';
+import 'orders_section/orders_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
