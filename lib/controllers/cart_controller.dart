@@ -52,9 +52,11 @@ class CartController extends GetxController {
       'shipping_method': 'Home Delivery',
       'payment_method': orderPaymentMethod,
       'order_placed': true,
+      'order_code': 'E-Mart-${DateTime.now().millisecondsSinceEpoch}',
       'order_confirmed': false,
       'order_on_delivery': false,
       'order_delivered': false,
+      'order_date': DateTime.now(),
       'total_amount': totalAmount,
       'orders': FieldValue.arrayUnion(products),
     });

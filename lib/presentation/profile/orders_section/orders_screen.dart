@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'orders_details.dart';
 
 class OrdersScreen extends StatelessWidget {
-  const OrdersScreen({super.key});
+  final dynamic data;
+  const OrdersScreen({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {

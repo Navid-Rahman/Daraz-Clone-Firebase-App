@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../constants/consts.dart';
 import '../constants/firebase_consts.dart';
 
 class HomeController extends GetxController {
@@ -12,6 +13,8 @@ class HomeController extends GetxController {
   var currentNavIndex = 0.obs;
 
   var userName = '';
+
+  var searchController = TextEditingController();
 
   getUserName() async {
     var data = await firestore

@@ -100,4 +100,20 @@ class FirestoreServices {
   static getAllProducts() {
     return firestore.collection(productsCollection).snapshots();
   }
+
+  /// Get featured products
+  static getFeaturedProducts() {
+    return firestore
+        .collection(productsCollection)
+        .where('is_featured', isEqualTo: true)
+        .get();
+  }
+
+  /// Get search products
+  static searchProducts(String query) {
+    return firestore
+        .collection(productsCollection)
+        .where('p_name', isLessThanOrEqualTo: query)
+        .get();
+  }
 }

@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
+import 'package:daraz_idea_firebase/controllers/home_controller.dart';
 import 'package:daraz_idea_firebase/presentation/categories/items_details.dart';
+import 'package:daraz_idea_firebase/presentation/home_screen/search_screen.dart';
 import 'package:daraz_idea_firebase/presentation/home_screen/widgets/featured_button.dart';
 import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:daraz_idea_firebase/utils/widgets/home_buttons.dart';
@@ -12,6 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<HomeController>();
+
     return Container(
       padding: const EdgeInsets.all(12),
       color: lightGrey,
@@ -25,15 +29,21 @@ class HomeScreen extends StatelessWidget {
               color: lightGrey,
               height: 60,
               child: TextFormField(
+                controller: controller.searchController,
                 decoration: InputDecoration(
                   hintText: searchAnything,
                   hintStyle: const TextStyle(
                     color: textfieldGrey,
                   ),
-                  prefixIcon: const Icon(
+                  suffixIcon: const Icon(
                     Icons.search,
                     color: textfieldGrey,
-                  ),
+                  ).onTap(() {
+                    if (controller.searchController.text.isNotEmpty) {
+                      Get.to(() => SearchScreen(
+                          query: controller.searchController.text));
+                    }
+                  }),
                   filled: true,
                   fillColor: whiteColor,
                   border: OutlineInputBorder(
@@ -194,26 +204,49 @@ class HomeScreen extends StatelessWidget {
                           10.heightBox,
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: List.generate(
-                                  6,
-                                  (index) => Column(
+                            child: FutureBuilder(
+                              future: FirestoreServices.getFeaturedProducts(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (!snapshot.hasData) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                      valueColor:
+                                          AlwaysStoppedAnimation(redColor),
+                                    ),
+                                  );
+                                } else if (snapshot.data!.docs.isEmpty) {
+                                  return "No Featured Products"
+                                      .text
+                                      .white
+                                      .makeCentered();
+                                } else {
+                                  var featuredProductsData =
+                                      snapshot.data!.docs;
+
+                                  return Row(
+                                    children: List.generate(
+                                      featuredProductsData.length,
+                                      (index) => Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Image.asset(
-                                            imgP1,
+                                          Image.network(
+                                            featuredProductsData[index]
+                                                ['p_imgs'][0],
                                             width: 150,
+                                            height: 150,
                                             fit: BoxFit.cover,
                                           ),
                                           10.heightBox,
-                                          "Lenovo Ideapad 320"
+                                          "${featuredProductsData[index]['p_name']}"
                                               .text
                                               .color(darkFontGrey)
                                               .fontFamily(semibold)
                                               .make(),
                                           10.heightBox,
-                                          "Rs. 50,000"
+                                          "${featuredProductsData[index]['p_price']}"
+                                              .numCurrency
                                               .text
                                               .color(redColor)
                                               .fontFamily(semibold)
@@ -228,7 +261,22 @@ class HomeScreen extends StatelessWidget {
                                           .rounded
                                           .white
                                           .padding(const EdgeInsets.all(8))
-                                          .make()),
+                                          .make()
+                                          .onTap(
+                                        () {
+                                          Get.to(
+                                            () => ItemDetails(
+                                              title: featuredProductsData[index]
+                                                  ['p_name'],
+                                              data: featuredProductsData[index],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
                             ),
                           ),
                         ],

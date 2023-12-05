@@ -1,4 +1,6 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
+import 'package:daraz_idea_firebase/presentation/categories/categories_details.dart';
+import 'package:get/get.dart';
 
 Widget featuredButton({
   String? title,
@@ -22,5 +24,8 @@ Widget featuredButton({
       .padding(const EdgeInsets.all(4))
       .roundedSM
       .outerShadowSm
-      .make();
+      .make()
+      .onTap(() {
+    Get.to(() => CategoryDetails(title: title));
+  });
 }
