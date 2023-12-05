@@ -66,4 +66,38 @@ class FirestoreServices {
         .where('fromId', isEqualTo: currentUser!.uid)
         .snapshots();
   }
+
+  /// Get all counts
+  static getCounts() async {
+    var data = await Future.wait([
+      firestore
+          .collection(cartCollection)
+          .where('added_by', isEqualTo: currentUser!.uid)
+          .get()
+          .then((value) {
+        return value.docs.length;
+      }),
+      firestore
+          .collection(productsCollection)
+          .where('p_wishlist', arrayContains: currentUser!.uid)
+          .get()
+          .then((value) {
+        return value.docs.length;
+      }),
+      firestore
+          .collection(ordersCollection)
+          .where('order_by', isEqualTo: currentUser!.uid)
+          .get()
+          .then((value) {
+        return value.docs.length;
+      })
+    ]);
+
+    return data;
+  }
+
+  /// Get all products
+  static getAllProducts() {
+    return firestore.collection(productsCollection).snapshots();
+  }
 }

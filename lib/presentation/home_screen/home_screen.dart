@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/constants/lists.dart';
+import 'package:daraz_idea_firebase/presentation/categories/items_details.dart';
 import 'package:daraz_idea_firebase/presentation/home_screen/widgets/featured_button.dart';
+import 'package:daraz_idea_firebase/services/firestore_services.dart';
 import 'package:daraz_idea_firebase/utils/widgets/home_buttons.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -258,53 +262,87 @@ class HomeScreen extends StatelessWidget {
 
                     /// All Products Section
                     20.heightBox,
-                    GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: 6,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        mainAxisExtent: 300,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              imgP5,
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
-                            ),
-                            const Spacer(),
-                            "Lenovo Ideapad 320"
-                                .text
-                                .color(darkFontGrey)
-                                .fontFamily(semibold)
-                                .make(),
-                            10.heightBox,
-                            "Rs. 50,000"
-                                .text
-                                .color(redColor)
-                                .fontFamily(semibold)
-                                .make(),
-                          ],
-                        )
-                            .box
-                            .white
-                            .rounded
-                            .margin(
-                              const EdgeInsets.symmetric(horizontal: 4),
-                            )
-                            .padding(
-                              const EdgeInsets.all(12),
-                            )
-                            .make();
-                      },
+
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: "All Products"
+                          .text
+                          .color(darkFontGrey)
+                          .size(18)
+                          .fontFamily(bold)
+                          .make(),
                     ),
+
+                    20.heightBox,
+
+                    StreamBuilder(
+                        stream: FirestoreServices.getAllProducts(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (!snapshot.hasData) {
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation(redColor),
+                              ),
+                            );
+                          } else {
+                            var allProductsData = snapshot.data!.docs;
+
+                            return GridView.builder(
+                              shrinkWrap: true,
+                              itemCount: allProductsData.length,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                                mainAxisExtent: 300,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Image.network(
+                                      allProductsData[index]['p_imgs'][0],
+                                      height: 200,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    const Spacer(),
+                                    "${allProductsData[index]['p_name']}"
+                                        .text
+                                        .color(darkFontGrey)
+                                        .fontFamily(semibold)
+                                        .make(),
+                                    10.heightBox,
+                                    "${allProductsData[index]['p_price']}"
+                                        .text
+                                        .color(redColor)
+                                        .fontFamily(semibold)
+                                        .make(),
+                                  ],
+                                )
+                                    .box
+                                    .white
+                                    .rounded
+                                    .margin(
+                                      const EdgeInsets.symmetric(horizontal: 4),
+                                    )
+                                    .padding(
+                                      const EdgeInsets.all(12),
+                                    )
+                                    .make()
+                                    .onTap(() {
+                                  Get.to(() => ItemDetails(
+                                        title: allProductsData[index]['p_name'],
+                                        data: allProductsData[index],
+                                      ));
+                                });
+                              },
+                            );
+                          }
+                        })
                   ],
                 ),
               ),

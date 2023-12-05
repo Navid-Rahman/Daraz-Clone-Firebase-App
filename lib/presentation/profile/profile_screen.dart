@@ -20,6 +20,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+    FirestoreServices.getCounts();
 
     return bgWidget(
       child: Scaffold(
@@ -115,26 +116,63 @@ class AccountScreen extends StatelessWidget {
 
                     20.heightBox,
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        detailsCard(
-                          width: context.screenWidth / 3.5,
-                          count: data['cart_count'],
-                          title: "in your cart",
-                        ),
-                        detailsCard(
-                          width: context.screenWidth / 3.5,
-                          count: data['wishlist_count'],
-                          title: "in your wishlist",
-                        ),
-                        detailsCard(
-                          width: context.screenWidth / 3.5,
-                          count: data['order_count'],
-                          title: "your orders",
-                        ),
-                      ],
+                    FutureBuilder(
+                      future: FirestoreServices.getCounts(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<dynamic> snapshot) {
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation(redColor),
+                            ),
+                          );
+                        } else {
+                          var countData = snapshot.data;
+
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              detailsCard(
+                                width: context.screenWidth / 3.5,
+                                count: countData[0].toString(),
+                                title: "in your cart",
+                              ),
+                              detailsCard(
+                                width: context.screenWidth / 3.5,
+                                count: countData[1].toString(),
+                                title: "in your wishlist",
+                              ),
+                              detailsCard(
+                                width: context.screenWidth / 3.5,
+                                count: countData[2].toString(),
+                                title: "your orders",
+                              ),
+                            ],
+                          );
+                        }
+                      },
                     ),
+
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    //     detailsCard(
+                    //       width: context.screenWidth / 3.5,
+                    //       count: data['cart_count'],
+                    //       title: "in your cart",
+                    //     ),
+                    //     detailsCard(
+                    //       width: context.screenWidth / 3.5,
+                    //       count: data['wishlist_count'],
+                    //       title: "in your wishlist",
+                    //     ),
+                    //     detailsCard(
+                    //       width: context.screenWidth / 3.5,
+                    //       count: data['order_count'],
+                    //       title: "your orders",
+                    //     ),
+                    //   ],
+                    // ),
 
                     /// Buttons Section
                     ListView.separated(
