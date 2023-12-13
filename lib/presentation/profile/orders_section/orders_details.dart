@@ -1,7 +1,6 @@
 import 'package:daraz_idea_firebase/constants/consts.dart';
 import 'package:daraz_idea_firebase/presentation/profile/orders_section/widgets/order_placed_details.dart';
 import 'package:daraz_idea_firebase/presentation/profile/orders_section/widgets/order_status.dart';
-import 'package:intl/intl.dart';
 
 class OrdersDetails extends StatelessWidget {
   final dynamic data;
