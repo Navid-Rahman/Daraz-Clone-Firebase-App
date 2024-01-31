@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(12),
-      color: lightGrey,
+      color: palettesTwo,
       width: context.screenWidth,
       height: context.screenHeight,
       child: SafeArea(
@@ -33,11 +33,11 @@ class HomeScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: searchAnything,
                   hintStyle: const TextStyle(
-                    color: textfieldGrey,
+                    color: palettesEight,
                   ),
                   suffixIcon: const Icon(
                     Icons.search,
-                    color: textfieldGrey,
+                    color: palettesFive,
                   ).onTap(() {
                     if (controller.searchController.text.isNotEmpty) {
                       Get.to(() => SearchScreen(
@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                     }
                   }),
                   filled: true,
-                  fillColor: whiteColor,
+                  fillColor: palettesTen,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
@@ -92,9 +92,10 @@ class HomeScreen extends StatelessWidget {
                         2,
                         (index) => homeButtons(
                           icon: index == 0 ? icTodaysDeal : icFlashDeal,
-                          title: index == 0 ? todaysDeal : flashSale,
+                          //title: index == 0 ? todaysDeal : flashSale,
                           height: context.screenHeight * 0.15,
                           width: context.screenWidth / 2.5,
+
                           //onPressed: () {},
                         ),
                       ),

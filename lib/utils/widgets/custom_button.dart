@@ -5,13 +5,21 @@ Widget customButton({
   color,
   textColor,
   String? title,
+  double? width,
+  double? borderRadius,
 }) {
-  return ElevatedButton(
-    onPressed: onPressed,
-    style: ElevatedButton.styleFrom(
-      backgroundColor: color,
-      padding: const EdgeInsets.all(12),
+  return SizedBox(
+    width: width ?? double.infinity,
+    child: ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+        padding: const EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 10),
+        ),
+      ),
+      child: title!.text.color(textColor).fontFamily(bold).make(),
     ),
-    child: title!.text.color(textColor).fontFamily(bold).make(),
   );
 }

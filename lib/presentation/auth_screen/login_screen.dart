@@ -1,11 +1,11 @@
-import 'package:daraz_idea_firebase/constants/consts.dart';
-import 'package:daraz_idea_firebase/constants/lists.dart';
-import 'package:daraz_idea_firebase/presentation/auth_screen/signup_screen.dart';
-import 'package:daraz_idea_firebase/presentation/home_screen/home.dart';
-import 'package:daraz_idea_firebase/utils/widgets/app_logo_widget.dart';
-import 'package:daraz_idea_firebase/utils/widgets/bg_widget.dart';
-import 'package:daraz_idea_firebase/utils/widgets/custom_button.dart';
-import 'package:daraz_idea_firebase/utils/widgets/custom_textfields.dart';
+import '../../constants/consts.dart';
+import '../../constants/lists.dart';
+import 'signup_screen.dart';
+import '../home_screen/home.dart';
+import '../../utils/widgets/app_logo_widget.dart';
+import '../../utils/widgets/bg_widget.dart';
+import '../../utils/widgets/custom_button.dart';
+import '../../utils/widgets/custom_textfields.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/auth_controllers.dart';
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child: forgetPassword.text.make(),
+                        child: forgetPassword.text.color(palettesSix).make(),
                       ),
                     ),
                     5.heightBox,
@@ -63,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                           )
                         : customButton(
                             title: logIn,
-                            color: redColor,
+                            color: palettesTwo,
                             textColor: whiteColor,
                             onPressed: () async {
                               controller.isLoading(true);
@@ -89,8 +89,8 @@ class LoginScreen extends StatelessWidget {
                         Get.to(() => const SignUpScreen());
                       },
                       title: signUp,
-                      color: lightGolden,
-                      textColor: redColor,
+                      color: palettesTen,
+                      textColor: palettesSeven,
                     ).box.width(context.screenWidth - 50).make(),
                     10.heightBox,
                     loginWith.text.color(fontGrey).make(),
@@ -115,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                   ],
                 )
                     .box
-                    .white
+                    .color(palettesFour)
                     .rounded
                     .padding(const EdgeInsets.all(10))
                     .width(context.screenWidth - 70)

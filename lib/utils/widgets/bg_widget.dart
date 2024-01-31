@@ -1,4 +1,4 @@
-import 'package:daraz_idea_firebase/constants/consts.dart';
+import '../../constants/consts.dart';
 
 Widget bgWidget({Widget? child}) {
   return Container(

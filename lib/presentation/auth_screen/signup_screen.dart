@@ -75,14 +75,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child: forgetPassword.text.make(),
+                        child: forgetPassword.text.color(palettesSix).make(),
                       ),
                     ),
                     5.heightBox,
                     Row(
                       children: [
                         Checkbox(
-                          activeColor: redColor,
+                          activeColor: palettesTwo,
                           checkColor: whiteColor,
                           value: isCheck,
                           onChanged: (value) {
@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           )
                         : customButton(
                             title: signUp,
-                            color: isCheck == true ? redColor : lightGrey,
+                            color: isCheck == true ? palettesTwo : lightGrey,
                             textColor: whiteColor,
                             onPressed: () async {
                               if (isCheck != false) {
@@ -169,7 +169,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 )
                     .box
-                    .white
+                    .color(palettesFour)
                     .rounded
                     .padding(const EdgeInsets.all(10))
                     .width(context.screenWidth - 70)

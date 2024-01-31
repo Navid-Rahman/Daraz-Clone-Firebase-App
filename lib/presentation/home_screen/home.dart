@@ -1,8 +1,8 @@
-import 'package:daraz_idea_firebase/constants/consts.dart';
-import 'package:daraz_idea_firebase/controllers/home_controller.dart';
-import 'package:daraz_idea_firebase/presentation/cart/cart_screen.dart';
-import 'package:daraz_idea_firebase/presentation/categories/categories_screen.dart';
-import 'package:daraz_idea_firebase/presentation/home_screen/home_screen.dart';
+import '../../constants/consts.dart';
+import '../../controllers/home_controller.dart';
+import '../cart/cart_screen.dart';
+import '../categories/categories_screen.dart';
+import 'home_screen.dart';
 import 'package:get/get.dart';
 
 import '../../utils/widgets/exit_dialog.dart';
