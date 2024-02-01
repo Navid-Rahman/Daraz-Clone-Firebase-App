@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: redColor,
+      backgroundColor: palettesOne,
       body: Center(
         child: Column(
           children: [
@@ -51,9 +51,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 300,
               ),
             ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
             20.heightBox,
             appLogoWidget(),
             10.heightBox,
