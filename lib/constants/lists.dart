@@ -93,7 +93,7 @@ const profileButtonIcons = [
 const paymentMethodListImage = [
   imgPaypal,
   imgStripe,
-  imgCod,
+  imgWorldpay,
 ];
 
 const paymentMethodTitle = [

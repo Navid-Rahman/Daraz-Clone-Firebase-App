@@ -15,9 +15,10 @@ class PaymentMethodScreen extends StatelessWidget {
 
     return Obx(
       () => Scaffold(
-        backgroundColor: whiteColor,
+        backgroundColor: palettesFour,
         appBar: AppBar(
-          title: "Choose Payment Method".text.color(darkFontGrey).make(),
+          title: "Choose Payment Method".text.color(whiteColor).make(),
+          iconTheme: const IconThemeData(color: whiteColor),
         ),
         bottomNavigationBar: SizedBox(
           width: context.screenWidth,
@@ -25,12 +26,14 @@ class PaymentMethodScreen extends StatelessWidget {
           child: controller.placingOrder.value
               ? const Center(
                   child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(redColor),
+                    valueColor: AlwaysStoppedAnimation(palettesTwo),
                   ),
                 )
               : customButton(
-                  color: redColor,
+                  color: palettesTwo,
                   textColor: whiteColor,
+                  borderRadius: 0,
+                  width: context.screenWidth,
                   title: "Place Order",
                   onPressed: () async {
                     await controller.placeMyOrder(
@@ -65,7 +68,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: controller.paymentIndex.value == index
-                              ? redColor
+                              ? palettesTwo
                               : Colors.transparent,
                           width: 3,
                         ),
@@ -77,7 +80,6 @@ class PaymentMethodScreen extends StatelessWidget {
                             paymentMethodListImage[index],
                             height: 120,
                             width: double.infinity,
-                            fit: BoxFit.cover,
                             colorBlendMode:
                                 controller.paymentIndex.value == index
                                     ? BlendMode.darken
@@ -104,9 +106,9 @@ class PaymentMethodScreen extends StatelessWidget {
                             right: 0,
                             child: paymentMethodTitle[index]
                                 .text
-                                .white
+                                .color(palettesTwo)
                                 .fontFamily(semibold)
-                                .size(16)
+                                .size(18)
                                 .make(),
                           ),
                         ],

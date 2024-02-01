@@ -14,7 +14,7 @@ class ShippingDetailsScreen extends StatelessWidget {
     var controller = Get.find<CartController>();
 
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: palettesFour,
       appBar: AppBar(
         title: "Shipping Info".text.color(darkFontGrey).make(),
       ),
@@ -22,8 +22,10 @@ class ShippingDetailsScreen extends StatelessWidget {
         width: context.screenWidth,
         height: 60,
         child: customButton(
-          color: redColor,
+          color: palettesTwo,
           textColor: whiteColor,
+          borderRadius: 0,
+          width: context.screenWidth,
           title: "Continue",
           onPressed: () {
             if (controller.addressController.text.isNotEmpty &&

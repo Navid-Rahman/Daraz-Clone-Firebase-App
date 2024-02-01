@@ -14,21 +14,20 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
 
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: palettesFour,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: "Shopping Cart"
-            .text
-            .color(darkFontGrey)
-            .fontFamily(semibold)
-            .make(),
+        title:
+            "Shopping Cart".text.color(whiteColor).fontFamily(semibold).make(),
       ),
       bottomNavigationBar: SizedBox(
         width: context.screenWidth,
         height: 60,
         child: customButton(
-          color: redColor,
+          color: palettesTwo,
           textColor: whiteColor,
+          borderRadius: 0,
+          width: context.screenWidth,
           title: "Proceed to Checkout",
           onPressed: () {
             Get.to(() => const ShippingDetailsScreen());
@@ -46,7 +45,7 @@ class CartScreen extends StatelessWidget {
             );
           } else if (snapshot.data!.docs.isEmpty) {
             return Center(
-              child: "No items in cart".text.color(darkFontGrey).make(),
+              child: "No items in cart".text.color(palettesTwo).make(),
             );
           } else {
             var data = snapshot.data!.docs;
@@ -70,7 +69,7 @@ class CartScreen extends StatelessWidget {
                           title:
                               "${data[index]['title']}  (x${data[index]['quantity']})"
                                   .text
-                                  .color(darkFontGrey)
+                                  .color(palettesTwo)
                                   .fontFamily(semibold)
                                   .make(),
                           subtitle: data[index]['price']
@@ -88,7 +87,13 @@ class CartScreen extends StatelessWidget {
                               color: redColor,
                             ),
                           ),
-                        );
+                        )
+                            .box
+                            .rounded
+                            .color(palettesTen)
+                            .shadowSm
+                            .padding(const EdgeInsets.all(8))
+                            .make();
                       },
                     ),
                   ),
@@ -97,7 +102,7 @@ class CartScreen extends StatelessWidget {
                     children: [
                       "Total Price"
                           .text
-                          .color(darkFontGrey)
+                          .color(palettesTwo)
                           .fontFamily(semibold)
                           .make(),
                       Obx(
@@ -110,7 +115,8 @@ class CartScreen extends StatelessWidget {
                   )
                       .box
                       .padding(const EdgeInsets.all(12))
-                      .color(lightGolden)
+                      .color(palettesTen)
+                      .shadowSm
                       .roundedSM
                       .make(),
                   10.heightBox,

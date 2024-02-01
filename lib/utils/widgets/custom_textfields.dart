@@ -13,7 +13,19 @@ Widget customTextField({String? title, String? hint, controller, isPassword}) {
           hintText: hint,
           hintStyle: const TextStyle(
             fontFamily: semibold,
-            color: textfieldGrey,
+            color: palettesNine,
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: redColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: textfieldGrey),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: textfieldGrey),
           ),
           isDense: true,
           fillColor: lightGrey,
@@ -25,7 +37,7 @@ Widget customTextField({String? title, String? hint, controller, isPassword}) {
           ),
         ),
       ),
-      5.heightBox,
+      10.heightBox,
     ],
   );
 }
