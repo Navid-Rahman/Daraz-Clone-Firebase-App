@@ -40,6 +40,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       child: Scaffold(
         appBar: AppBar(
           title: widget.title!.text.white.fontFamily(bold).make(),
+          iconTheme: const IconThemeData(color: whiteColor),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +55,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                       .text
                       .size(12)
                       .fontFamily(semibold)
-                      .color(darkFontGrey)
+                      .color(palettesSix)
                       .makeCentered()
                       .box
                       .rounded
@@ -62,7 +63,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                       .margin(const EdgeInsets.symmetric(
                         horizontal: 4,
                       ))
-                      .white
+                      .color(palettesNine)
                       .make()
                       .onTap(() {
                     switchCategory(controller.subcat[index]);
@@ -86,10 +87,8 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                   );
                 } else if (snapshot.data!.docs.isEmpty) {
                   return Expanded(
-                    child: "No products yet"
-                        .text
-                        .color(darkFontGrey)
-                        .makeCentered(),
+                    child:
+                        "No products yet".text.color(whiteColor).makeCentered(),
                   );
                 } else {
                   var data = snapshot.data!.docs;
@@ -119,7 +118,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                             10.heightBox,
                             "${data[index]['p_name']}"
                                 .text
-                                .color(darkFontGrey)
+                                .color(palettesTen)
                                 .fontFamily(semibold)
                                 .make(),
                             10.heightBox,
@@ -128,13 +127,13 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                                   locale: 'en_IN',
                                 )
                                 .text
-                                .color(redColor)
+                                .color(palettesSix)
                                 .fontFamily(semibold)
                                 .make(),
                           ],
                         )
                             .box
-                            .white
+                            .color(palettesEight)
                             .rounded
                             .outerShadowSm
                             .margin(

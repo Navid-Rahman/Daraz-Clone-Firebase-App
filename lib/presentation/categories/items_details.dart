@@ -21,7 +21,7 @@ class ItemDetails extends StatelessWidget {
         return true;
       },
       child: Scaffold(
-        backgroundColor: lightGrey,
+        backgroundColor: palettesFour,
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -32,12 +32,13 @@ class ItemDetails extends StatelessWidget {
               Icons.arrow_back,
             ),
           ),
-          title: title!.text.color(darkFontGrey).fontFamily(bold).make(),
+          title: title!.text.color(whiteColor).fontFamily(bold).make(),
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.share,
+                color: palettesFive,
               ),
             ),
             Obx(
@@ -51,7 +52,9 @@ class ItemDetails extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.favorite,
-                  color: controller.isFavourite.value ? redColor : darkFontGrey,
+                  color: controller.isFavourite.value
+                      ? palettesTwo
+                      : palettesEight,
                 ),
               ),
             ),
@@ -62,8 +65,10 @@ class ItemDetails extends StatelessWidget {
           height: 60,
           child: customButton(
             title: "Add to Cart",
-            color: redColor,
+            color: palettesTwo,
             textColor: whiteColor,
+            width: double.infinity,
+            borderRadius: 0,
             onPressed: () {
               if (controller.quantity.value > 0) {
                 controller.addToCart(
@@ -110,7 +115,7 @@ class ItemDetails extends StatelessWidget {
                       /// Title and Details Section
                       title!.text
                           .size(18)
-                          .color(darkFontGrey)
+                          .color(palettesTwo)
                           .fontFamily(bold)
                           .make(),
                       10.heightBox,
@@ -119,8 +124,8 @@ class ItemDetails extends StatelessWidget {
                       VxRating(
                         value: double.parse(data['p_rating'].toString()),
                         onRatingUpdate: (value) {},
-                        normalColor: textfieldGrey,
-                        selectionColor: golden,
+                        normalColor: palettesThree,
+                        selectionColor: palettesTwo,
                         isSelectable: false,
                         count: 5,
                         maxRating: 5,
@@ -152,7 +157,7 @@ class ItemDetails extends StatelessWidget {
                                 "${data['p_seller']}"
                                     .text
                                     .fontFamily(semibold)
-                                    .color(darkFontGrey)
+                                    .color(palettesFour)
                                     .size(16)
                                     .make(),
                               ],
@@ -161,7 +166,7 @@ class ItemDetails extends StatelessWidget {
                           const CircleAvatar(
                             backgroundColor: Colors.white,
                             child: Icon(
-                              Icons.message_outlined,
+                              Icons.mark_unread_chat_alt_outlined,
                               color: darkFontGrey,
                             ),
                           ).onTap(() {
@@ -179,7 +184,7 @@ class ItemDetails extends StatelessWidget {
                             vertical: 4,
                           ))
                           .rounded
-                          .color(textfieldGrey)
+                          .color(palettesFive)
                           .make(),
 
                       /// Colors section
@@ -194,7 +199,7 @@ class ItemDetails extends StatelessWidget {
                                   child: "Color"
                                       .text
                                       .fontFamily(semibold)
-                                      .color(textfieldGrey)
+                                      .color(palettesSix)
                                       .make(),
                                 ),
                                 Row(
@@ -237,7 +242,7 @@ class ItemDetails extends StatelessWidget {
                                   child: "Quantity"
                                       .text
                                       .fontFamily(semibold)
-                                      .color(textfieldGrey)
+                                      .color(palettesSix)
                                       .make(),
                                 ),
                                 Obx(
@@ -287,7 +292,7 @@ class ItemDetails extends StatelessWidget {
                                   child: "Total Price"
                                       .text
                                       .fontFamily(semibold)
-                                      .color(textfieldGrey)
+                                      .color(palettesSix)
                                       .make(),
                                 ),
                                 "${controller.totalPrice.value}"
@@ -302,23 +307,23 @@ class ItemDetails extends StatelessWidget {
                               ],
                             ).box.padding(const EdgeInsets.all(8)).make(),
                           ],
-                        ).box.white.shadowSm.make(),
+                        ).box.rounded.color(whiteColor).shadowSm.make(),
                       ),
 
                       /// Description Section
-                      10.heightBox,
+                      20.heightBox,
                       "Description:"
                           .text
                           .size(18)
                           .fontFamily(semibold)
-                          .color(darkFontGrey)
+                          .color(palettesTwo)
                           .make(),
 
                       10.heightBox,
                       "${data['p_desc']}"
                           .text
                           .fontFamily(semibold)
-                          .color(darkFontGrey)
+                          .color(palettesOne)
                           .make(),
 
                       10.heightBox,
@@ -337,7 +342,17 @@ class ItemDetails extends StatelessWidget {
                                 .make(),
                             trailing: const Icon(Icons.arrow_forward),
                             onTap: () {},
-                          ),
+                          )
+                              .box
+                              .color(whiteColor)
+                              .margin(
+                                const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                              )
+                              .rounded
+                              .make(),
                         ),
                       ),
 
@@ -346,7 +361,7 @@ class ItemDetails extends StatelessWidget {
 
                       productsYouMayAlsoLike.text
                           .fontFamily(bold)
-                          .color(darkFontGrey)
+                          .color(palettesTwo)
                           .size(16)
                           .make(),
 
@@ -368,15 +383,15 @@ class ItemDetails extends StatelessWidget {
                                         fit: BoxFit.cover,
                                       ),
                                       10.heightBox,
-                                      "Lenovo Ideapad 320"
+                                      "Ferrari Portofino"
                                           .text
-                                          .color(darkFontGrey)
+                                          .color(palettesTwo)
                                           .fontFamily(semibold)
                                           .make(),
                                       10.heightBox,
-                                      "Rs. 50,000"
+                                      "Rs. 1,00,00,00000"
                                           .text
-                                          .color(redColor)
+                                          .color(palettesSeven)
                                           .fontFamily(semibold)
                                           .make(),
                                     ],
@@ -387,7 +402,7 @@ class ItemDetails extends StatelessWidget {
                                             horizontal: 4),
                                       )
                                       .rounded
-                                      .white
+                                      .color(palettesThree)
                                       .padding(const EdgeInsets.all(8))
                                       .make()),
                         ),
