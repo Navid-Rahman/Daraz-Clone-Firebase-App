@@ -6,18 +6,16 @@ Widget homeButtons({
   height,
   width,
   //onPressed,
-  context,
 }) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Image.asset(
         icon,
-        height: 70,
-        width: 70,
+        width: 50,
       ),
-      // 10.heightBox,
-      // title!.text.fontFamily(semibold).color(darkFontGrey).make()
+      10.heightBox,
+      title!.text.fontFamily(semibold).color(palettesOne).make()
     ],
-  ).box.rounded.white.size(width, height).shadowSm.make();
+  ).box.rounded.color(palettesFour).size(width, height).shadowSm.make();
 }

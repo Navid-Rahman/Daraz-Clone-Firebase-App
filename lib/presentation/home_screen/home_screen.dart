@@ -92,10 +92,9 @@ class HomeScreen extends StatelessWidget {
                         2,
                         (index) => homeButtons(
                           icon: index == 0 ? icTodaysDeal : icFlashDeal,
-                          //title: index == 0 ? todaysDeal : flashSale,
+                          title: index == 0 ? todaysDeal : flashSale,
                           height: context.screenHeight * 0.15,
-                          width: context.screenWidth / 2.5,
-
+                          width: context.screenWidth / 3,
                           //onPressed: () {},
                         ),
                       ),
@@ -133,33 +132,42 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: List.generate(
-                          3,
-                          (index) => homeButtons(
-                                icon: index == 0
-                                    ? icTopCategories
-                                    : index == 1
-                                        ? icBrands
-                                        : icTopSeller,
-                                title: index == 0
-                                    ? topCategories
-                                    : index == 1
-                                        ? brand
-                                        : topSellers,
-                                height: context.screenHeight * 0.15,
-                                width: context.screenWidth / 3.5,
-                              )),
+                        3,
+                        (index) => homeButtons(
+                          icon: index == 0
+                              ? icTopCategories
+                              : index == 1
+                                  ? icBrands
+                                  : icTopSeller,
+                          title: index == 0
+                              ? topCategories
+                              : index == 1
+                                  ? brand
+                                  : topSellers,
+                          height: context.screenHeight * 0.14,
+                          width: context.screenWidth / 3.5,
+                        ),
+                      ),
                     ),
 
                     10.heightBox,
 
                     /// Featured Categories
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: featuredCategories.text
-                          .color(darkFontGrey)
-                          .size(18)
-                          .fontFamily(semibold)
-                          .make(),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      width: context.screenWidth,
+                      decoration: BoxDecoration(
+                        color: palettesEight,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: featuredCategories.text
+                            .color(whiteColor)
+                            .size(18)
+                            .fontFamily(semibold)
+                            .make(),
+                      ),
                     ),
 
                     20.heightBox,
@@ -192,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                       width: context.screenWidth,
                       decoration: BoxDecoration(
-                        color: redColor,
+                        color: palettesFour,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Column(
@@ -213,7 +221,7 @@ class HomeScreen extends StatelessWidget {
                                   return const Center(
                                     child: CircularProgressIndicator(
                                       valueColor:
-                                          AlwaysStoppedAnimation(redColor),
+                                          AlwaysStoppedAnimation(palettesFour),
                                     ),
                                   );
                                 } else if (snapshot.data!.docs.isEmpty) {
@@ -242,14 +250,14 @@ class HomeScreen extends StatelessWidget {
                                           10.heightBox,
                                           "${featuredProductsData[index]['p_name']}"
                                               .text
-                                              .color(darkFontGrey)
+                                              .color(palettesTen)
                                               .fontFamily(semibold)
                                               .make(),
                                           10.heightBox,
                                           "${featuredProductsData[index]['p_price']}"
                                               .numCurrency
                                               .text
-                                              .color(redColor)
+                                              .color(palettesSix)
                                               .fontFamily(semibold)
                                               .make(),
                                         ],
@@ -260,7 +268,7 @@ class HomeScreen extends StatelessWidget {
                                                 horizontal: 4),
                                           )
                                           .rounded
-                                          .white
+                                          .color(palettesEight)
                                           .padding(const EdgeInsets.all(8))
                                           .make()
                                           .onTap(
@@ -312,14 +320,22 @@ class HomeScreen extends StatelessWidget {
                     /// All Products Section
                     20.heightBox,
 
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: "All Products"
-                          .text
-                          .color(darkFontGrey)
-                          .size(18)
-                          .fontFamily(bold)
-                          .make(),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      width: context.screenWidth,
+                      decoration: BoxDecoration(
+                        color: palettesEight,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: "All Products"
+                            .text
+                            .color(whiteColor)
+                            .size(18)
+                            .fontFamily(bold)
+                            .make(),
+                      ),
                     ),
 
                     20.heightBox,
@@ -361,19 +377,19 @@ class HomeScreen extends StatelessWidget {
                                     const Spacer(),
                                     "${allProductsData[index]['p_name']}"
                                         .text
-                                        .color(darkFontGrey)
+                                        .color(palettesTen)
                                         .fontFamily(semibold)
                                         .make(),
                                     10.heightBox,
                                     "${allProductsData[index]['p_price']}"
                                         .text
-                                        .color(redColor)
+                                        .color(palettesSix)
                                         .fontFamily(semibold)
                                         .make(),
                                   ],
                                 )
                                     .box
-                                    .white
+                                    .color(palettesEight)
                                     .rounded
                                     .margin(
                                       const EdgeInsets.symmetric(horizontal: 4),
