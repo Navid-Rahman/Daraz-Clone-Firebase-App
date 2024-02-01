@@ -20,6 +20,7 @@ class CategoriesScreen extends StatelessWidget {
             categories,
             style: TextStyle(
               fontFamily: bold,
+              color: whiteColor,
             ),
           ),
         ),
@@ -49,13 +50,13 @@ class CategoriesScreen extends StatelessWidget {
                       categoriesLists[index],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        color: darkFontGrey,
+                        color: palettesTwo,
                       ),
                     ),
                   ],
                 )
                     .box
-                    .white
+                    .color(palettesFour)
                     .rounded
                     .clip(Clip.antiAlias)
                     .outerShadowSm
