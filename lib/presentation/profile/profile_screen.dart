@@ -153,26 +153,7 @@ class AccountScreen extends StatelessWidget {
                       },
                     ),
 
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //   children: [
-                    //     detailsCard(
-                    //       width: context.screenWidth / 3.5,
-                    //       count: data['cart_count'],
-                    //       title: "in your cart",
-                    //     ),
-                    //     detailsCard(
-                    //       width: context.screenWidth / 3.5,
-                    //       count: data['wishlist_count'],
-                    //       title: "in your wishlist",
-                    //     ),
-                    //     detailsCard(
-                    //       width: context.screenWidth / 3.5,
-                    //       count: data['order_count'],
-                    //       title: "your orders",
-                    //     ),
-                    //   ],
-                    // ),
+                    20.heightBox,
 
                     /// Buttons Section
                     ListView.separated(
@@ -195,11 +176,12 @@ class AccountScreen extends StatelessWidget {
                           leading: Image.asset(
                             profileButtonIcons[index],
                             width: 30,
+                            color: palettesTwo,
                           ),
                           title: profileButtonLists[index]
                               .text
                               .fontFamily(semibold)
-                              .color(darkFontGrey)
+                              .color(palettesOne)
                               .make(),
                         );
                       },
@@ -213,14 +195,13 @@ class AccountScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                     )
                         .box
-                        .white
+                        .color(palettesFour)
                         .rounded
                         .shadowSm
                         .margin(const EdgeInsets.all(12))
                         .padding(const EdgeInsets.symmetric(horizontal: 16))
                         .make()
                         .box
-                        .color(redColor)
                         .make(),
                   ],
                 ),

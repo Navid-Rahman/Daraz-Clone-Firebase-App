@@ -8,10 +8,10 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: palettesFour,
       appBar: AppBar(
-        title:
-            "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),
+        title: "My Wishlist".text.color(whiteColor).fontFamily(semibold).make(),
+        iconTheme: const IconThemeData(color: whiteColor),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getMyWishlist(),
@@ -65,7 +65,7 @@ class WishlistScreen extends StatelessWidget {
                             color: redColor,
                           ),
                         ),
-                      );
+                      ).box.roundedSM.shadowSm.color(whiteColor).make();
                     },
                   ),
                 ),

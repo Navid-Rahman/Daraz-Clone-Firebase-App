@@ -11,9 +11,10 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: palettesFour,
       appBar: AppBar(
-        title: "Messages".text.color(darkFontGrey).fontFamily(semibold).make(),
+        title: "Messages".text.color(whiteColor).fontFamily(semibold).make(),
+        iconTheme: const IconThemeData(color: whiteColor),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getAllMessages(),

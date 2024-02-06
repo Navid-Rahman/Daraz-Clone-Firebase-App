@@ -12,9 +12,10 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: palettesFour,
       appBar: AppBar(
-        title: "My Orders".text.color(darkFontGrey).fontFamily(semibold).make(),
+        title: "My Orders".text.color(whiteColor).fontFamily(semibold).make(),
+        iconTheme: const IconThemeData(color: whiteColor),
       ),
       body: StreamBuilder(
         stream: FirestoreServices.getMyOrders(),
@@ -34,12 +35,29 @@ class OrdersScreen extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    leading: "${index + 1}"
-                        .text
-                        .fontFamily(bold)
-                        .color(darkFontGrey)
-                        .xl
-                        .make(),
+                    // leading: "${index + 1}"
+                    //     .text
+                    //     .fontFamily(bold)
+                    //     .color(darkFontGrey)
+                    //     .xl
+                    //     .make(),
+                    leading: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: palettesThree,
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: palettesTwo, width: 2),
+                      ),
+                      child: Center(
+                        child: "${index + 1}"
+                            .text
+                            .fontFamily(bold)
+                            .color(whiteColor)
+                            .xl
+                            .make(),
+                      ),
+                    ),
                     title: data[index]['order_code']
                         .toString()
                         .text
@@ -53,17 +71,21 @@ class OrdersScreen extends StatelessWidget {
                         .fontFamily(bold)
                         .make(),
                     trailing: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: darkFontGrey,
-                      ),
+                      icon: const Icon(Icons.double_arrow_outlined,
+                          color: palettesFive, size: 40),
                       onPressed: () {
                         Get.to(() => OrdersDetails(
                               data: data[index],
                             ));
                       },
                     ),
-                  );
+                  )
+                      .box
+                      .rounded
+                      .color(palettesTen)
+                      .border(color: palettesTwo, width: 2)
+                      .make()
+                      .p8();
                 });
           }
         },

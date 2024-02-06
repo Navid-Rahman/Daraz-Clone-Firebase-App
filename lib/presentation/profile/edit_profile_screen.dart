@@ -18,7 +18,9 @@ class EditProfileScreen extends StatelessWidget {
 
     return bgWidget(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          iconTheme: const IconThemeData(color: whiteColor),
+        ),
         body: Obx(
           () => Column(
             mainAxisSize: MainAxisSize.min,

@@ -4,7 +4,7 @@ Widget detailsCard({width, String? count, String? title}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      count!.text.fontFamily(semibold).color(darkFontGrey).size(16).make(),
+      count!.text.fontFamily(semibold).color(darkFontGrey).size(24).make(),
       5.heightBox,
       title!.text.color(darkFontGrey).make(),
     ],
@@ -14,9 +14,7 @@ Widget detailsCard({width, String? count, String? title}) {
       .white
       .shadowSm
       .width(width)
-      .height(
-        80,
-      )
+      .height(80)
       .padding(const EdgeInsets.all(4))
       .make();
 }
